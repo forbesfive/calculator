@@ -1,3 +1,106 @@
-body{
-    background:yellow;
+.calculator_container{
+    width:500px;
+    margin:0 auto;
+    border:1px solid black;
+}
+
+.display_container,
+.clear_container{
+    width:calc(100% - 20px);
+    padding:10px;
+}
+
+.buttons_container{
+    width:100%;
+}
+
+.numbers_container{
+    float:left;
+    width:380px;
+    padding:10px;
+}
+
+.operators_container{
+    float:left;
+    width:80px;
+    padding:10px;
+}
+
+.preview,
+.sum{
+    width:474px;
+    height:30px;
+    border:1px solid black;
+}
+
+.preview:focus,
+.sum:focus{
+    outline:none;
+}
+
+.preview{
+    border-bottom:none;
+}
+
+.sum{
+    border-top:none;
+}
+
+.clear{
+    width:480px;
+    height:40px;
+    background: #c22a1f;
+    border:none;
+    cursor: pointer;
+}
+
+.clear:active{
+    background: #87160e;
+}
+
+.decimal,
+.equals,
+.number{
+    float:left;
+    width:calc(33% - 5px);
+    display: block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height:50px;
+    background-color: #f3f573;
+    border:none;
+    cursor: pointer;
+}
+
+.decimal:active,
+.number:active{
+    background-color: #cfd143;
+}
+
+.equals{
+    background: #28d139;
+}
+
+.equals:active{
+    background-color: #12b022;
+}
+
+.operator{
+    float:left;
+    display: block;
+    width:100%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height:50px;
+    background-color: #48bdf7;
+    border:none;
+    cursor: pointer;
+}
+
+.operator:active{
+    background-color: #2b98cf;
+}
+
+.clearfix{
+    clear:both;
 }
