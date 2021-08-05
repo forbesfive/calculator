@@ -1,44 +1,53 @@
-console.log("test");
+let objCalculator = {
+    init:function(){
+        this.getAllElements();
+        this.addEventListeners();
+    },
+    getAllElements:function(){
+        this.objPreview = document.querySelector('.preview');
+        this.objSum = document.querySelector('.sum');
+        this.objClear = document.querySelector('.clear');
+        this.objDecimal = document.querySelector('.decimal');
+        this.objEquals = document.querySelector('.equals');
 
-// Number1, Number2, Operator
+        this.arrNumbers = document.querySelectorAll('.number');
+        this.arrOperators = document.querySelectorAll('.operator');
+    }
+}
 
-// number1 {operator} number2
+objCalculator.init();
 
-// 10 + 5
-// 10 - 5
-// 10 / 5
-// 10 * 5
+console.log(objCalculator);
 
 /*--
+Variables - Number1, Number2, Operator
 
 Cancel
-    number1 = ""
-    number2 = ""
-    operator = ""
-
-Numbers & operators
+    number1 = "";
+    number2 = "";
+    operator = "";
+Numbers & Operators
     IF number1 == ""
         THEN number1 = numberPressed
-    ELSE
+    ELSE 
         IF operator == ""
-            THEN number 1 += number
-        
-    IF operator =="" and number1 != ""
+            THEN number1 += number
+    IF operator == "" AND number1 != ""
         operator = operatorPressed
-    ELSE IF oprator == "" AND number1 == ""
+    ELSE IF operator == ""  AND number1 == ""
         THEN return error
-    ELSE IF operator != "" AND number1 != "" AND number2 == ""
-        operator == operatorPressed
+    ELSE IF operator != "" and number1 != "" AND number2 == ""
+        operator = operatorPressed
     ELSE IF operator != "" AND number2 != ""
-        THEN number1 == sum(number1,number2,operator) AND operatorPressed AND number 2 ==""
-
-Equals button
-    IF number 1 != "" AND number2 != "" AND operator != ""
-        THEN sum = sum(number1,number2,operator)
-        THEN number 1 = sum
+        THEN number1 == sum(number1,number2,operator)
+        THEN operator == operatorPressed
+        THEN number2 == "";
+Equals Button
+    IF number1 != "" AND number2 !="" AND operator != ""
+        THEN sum = sum(number1,number2,operator);
+        THEN number1 = sum
         THEN operator = ""
-        THEN number2 = ""
-
+        THEN number2 = "";
 Decimal
     IF operator == ""
         IF number1 == ""
@@ -55,5 +64,7 @@ Decimal
             IF number2 has a decimal
                 THEN return error
             ELSE
-                THEN append decimal to end of number1
+                THEN append decimal to end of number2
+    
+    
 --*/
