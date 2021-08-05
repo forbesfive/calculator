@@ -1,4 +1,7 @@
 let objCalculator = {
+    number1:'',
+    number2:'',
+    operator:'',
     init:function(){
         this.getAllElements();
         this.addEventListeners();
@@ -14,14 +17,38 @@ let objCalculator = {
         this.arrOperators = document.querySelectorAll('.operator');
     },
     addEventListeners:function(){
+        let _self = this;
         for(counter=0; counter < this.arrNumbers.length; counter++){
             let currentNumber = this.arrNumbers[counter];
             // console.log(currentNumber);
             currentNumber.addEventListener('click',function(event){
-            console.log(event.target.innerHTML);
+                let number = event.target.innerHTML;
+                _self.preview(number);
             });
         }
+        for(counter=0; counter < this.arrOperators.length; counter++){
+            let currentOperator = this.arrOperators[counter];
+            // console.log(currentNumber);
+            currentOperator.addEventListener('click',function(event){
+                let operator = event.target.innerHTML
+                _self.preview(operator);
+            });
+        }
+        this.objClear.addEventListener('click',function(event){
+            _self.clear();
+        });
+    },
+    preview:function(data){
+        console.log(data);
+    },
+    clear:function(){
+        this.number1 = "";
+        this.number2 = "";
+        this.operator = "";
+        this.objPreview.value = "";
+        this.objSum.value = "";
     }
+
 }
 
 objCalculator.init();
