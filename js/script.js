@@ -51,10 +51,27 @@ let objCalculator = {
         }
         console.log(dataType);
         if(dataType == 'number'){
-            // Do number logic
+            if(this.operator){
+                if(this.number2){
+                    this.number2 += data;
+                } else {
+                    this.number2 = data;
+                }
+            } else {
+                if(this.number1){
+                    this.number1 += data;
+                } else {
+                    this.number1 = data;
+                }
+            }
         } else {
-            // Do operator logic
+              if(this.number1){
+                this.operator = data;
+            } else {
+                // return error message
+            }
         }
+        this.displayPreview();
     },
     clear:function(){
         this.number1 = "";
@@ -62,8 +79,20 @@ let objCalculator = {
         this.operator = "";
         this.objPreview.value = "";
         this.objSum.value = "";
+    },
+    displayPreview:function(){
+        let strMessage = '';
+        if(this.number1){
+            strMessage += this.number1;
+        }
+        if(this.operator){
+            strMessage += this.operator;
+        }
+        if(this.number2){
+            strMessage += this.number2;
+        }
+        this.objPreview.value = strMessage;
     }
-
 }
 
 objCalculator.init();
