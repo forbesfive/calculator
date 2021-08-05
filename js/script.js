@@ -12,6 +12,15 @@ let objCalculator = {
 
         this.arrNumbers = document.querySelectorAll('.number');
         this.arrOperators = document.querySelectorAll('.operator');
+    },
+    addEventListeners:function(){
+        for(counter=0; counter < this.arrNumbers.length; counter++){
+            let currentNumber = this.arrNumbers[counter];
+            // console.log(currentNumber);
+            currentNumber.addEventListener('click',function(event){
+            console.log(event.target.innerHTML);
+            });
+        }
     }
 }
 
