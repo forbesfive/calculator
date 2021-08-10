@@ -37,6 +37,9 @@ let objCalculator = {
         this.objClear.addEventListener('click',function(event){
             _self.clear();
         });
+        this.objEquals.addEventListener('click',function(event){
+            _self.equals();
+        });
     },
     preview:function(data){
         console.log(data);
@@ -49,7 +52,7 @@ let objCalculator = {
                 dataType = 'operator';
             break;
         }
-        console.log(dataType);
+        // console.log(dataType);
         if(dataType == 'number'){
             if(this.operator){
                 if(this.number2){
@@ -92,6 +95,9 @@ let objCalculator = {
             strMessage += this.number2;
         }
         this.objPreview.value = strMessage;
+    },
+    equals: function(){
+        console.log('equals');
     }
 }
 
