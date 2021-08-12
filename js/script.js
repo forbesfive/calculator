@@ -2,7 +2,7 @@ let objCalculator = {
     number1:'',
     number2:'',
     operator:'',
-    init:function(){
+     init:function(){
         this.getAllElements();
         this.addEventListeners();
     },
@@ -31,7 +31,7 @@ let objCalculator = {
             let currentOperator = this.arrOperators[counter];
             // console.log(currentNumber);
             currentOperator.addEventListener('click',function(event){
-                let operator = event.target.innerHTML
+                let operator = event.target.innerHTML;
                 _self.preview(operator);
             });
         }
@@ -40,6 +40,10 @@ let objCalculator = {
         });
         this.objEquals.addEventListener('click',function(event){
             _self.equals();
+        });
+        this.objDecimal.addEventListener('click',function(event){
+            let decimal = event.target.innerHTML;
+            _self.preview(decimal);
         });
     },
     preview:function(data){
@@ -51,6 +55,9 @@ let objCalculator = {
             case '/':
             case '*':
                 dataType = 'operator';
+            break;
+            case '.':
+                dataType = 'decimal';
             break;
         }
         // console.log(dataType);
@@ -69,17 +76,58 @@ let objCalculator = {
                 }
             }
         } else {
-              if(this.number1){
-                if(this.number2){
-                    this.autocomplete(data);
-                } else {
-                    this.operator = data;
-                }
+            if(dataType == 'decimal'){
+                this.addDecimal();
             } else {
-                // return error message
+                if(this.number1){
+                    if(this.number2){
+                        this.autocomplete(data);
+                    } else {
+                        this.operator = data;
+                    }
+                } else {
+                    // return error message
+                }
             }
         }
         this.displayPreview();
+    },
+    addDecimal:function(){
+        if(this.operator){
+            if(this.number2){
+                if(!this.hasDecimal('number2')){
+                    this.number2 += '.';
+                }
+            } else {
+                this.number2 = '0.';
+            }
+        } else {
+            if(this.number1){
+                if(!this.hasDecimal('number1')){
+                    this.number1 += '.';
+                }
+            } else {
+                this.number1 = '0.';
+            }
+        }
+    },
+    hasDecimal:function(number){
+        let blnHasDecimal = false;
+        switch(number){
+            case 'number1':
+                if(this.number1.indexOf('.') !== -1){
+                    blnHasDecimal = true;
+                    console.log('you already have a decimal point on number1');
+                }
+            break;
+            case 'number2':
+                if(this.number2.indexOf('.') !== -1){
+                    blnHasDecimal = true;
+                    console.log('you already have a decimal point on number2');
+                }
+            break;
+        }
+        return blnHasDecimal;
     },
     autocomplete: function(operator){
         let strPreviousSum = this.objPreview.value;
